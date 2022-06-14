@@ -1,0 +1,20 @@
+.form-container{
+    margin-top: 20px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+form{
+    padding:20px;
+    width:70%;
+}
+form input, label{
+    width:80%;
+    margin:5px;
+}
+
+form input[type="submit"]{
+    width:100%;
+    margin-top: 20px;
+}
