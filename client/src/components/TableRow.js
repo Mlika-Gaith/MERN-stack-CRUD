@@ -6,7 +6,10 @@ export default function TableRow(props) {
     // eslint-disable-next-line eqeqeq
     if (window.confirm("are you sure you want to delete item ?") == true) {
       axios
-        .get(process.env.REACT_APP_API + "/business/delete/" + props.obj._id)
+        .get(
+          process.env.REACT_APP_API + "/business/delete/" + props.obj._id ||
+            "/business/delete/" + props.obj._id
+        )
         .then(console.log("deleted"))
         .catch((err) => console.log(err));
     }
