@@ -13,13 +13,7 @@ export default function Create() {
       business_name: businessName,
       business_gst_name: gstNumber,
     };
-    axios
-      .post(
-        process.env.REACT_APP_API + "/business/add",
-        obj || "/business/add",
-        obj
-      )
-      .then((res) => console.log(res.data));
+    axios.post("/business/add", obj).then((res) => console.log(res.data));
 
     // clear fields
     Array.from(e.target).forEach(() => (e.value = ""));

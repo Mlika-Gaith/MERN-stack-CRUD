@@ -5,12 +5,9 @@ import { useEffect, useState } from "react";
 export default function Index() {
   const [business, setBusiness] = useState([]);
   useEffect(() => {
-    console.log(process.env.API_URL);
     async function getData() {
       try {
-        let response = await axios.get(
-          process.env.REACT_APP_API + "/business" || "/business"
-        );
+        let response = await axios.get("/business");
         setBusiness(response.data);
       } catch (error) {
         console.log(error.message);

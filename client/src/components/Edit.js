@@ -13,16 +13,11 @@ export default function Edit() {
   const [gstNumber, setgstNumber] = useState("");
   // equivalent to componentDidMount in class components
   useEffect(() => {
-    axios
-      .get(
-        process.env.REACT_APP_API + "/business/edit/" + params.id ||
-          "/business/edit/" + params.id
-      )
-      .then((response) => {
-        setbusinessName(response.data.business_name);
-        setpersonName(response.data.person_name);
-        setgstNumber(response.data.business_gst_name);
-      });
+    axios.get("/business/edit/" + params.id).then((response) => {
+      setbusinessName(response.data.business_name);
+      setpersonName(response.data.person_name);
+      setgstNumber(response.data.business_gst_name);
+    });
   }, [params.id]);
 
   function onSubmit(event) {
@@ -33,11 +28,7 @@ export default function Edit() {
       business_gst_name: gstNumber,
     };
     axios
-      .post(
-        process.env.REACT_APP_API + "/business/edit/update/" + params.id,
-        obj || "/business/edit/update/" + params.id,
-        obj
-      )
+      .post("/business/edit/update/" + params.id, obj)
       .then((response) => console.log(response.data));
     // redirect to /index
     navigate(-1);
