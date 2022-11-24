@@ -2,14 +2,14 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 4000;
 const cors = require("cors");
 const mongoose = require("mongoose");
 const route = require("./business.route");
 const dotenv = require("dotenv");
 const path = require("path");
 dotenv.config();
-
+const PORT = process.env.PORT || 4000;
+console.log(process.env.PORT);
 mongoose.Promise = global.Promise;
 mongoose
   .connect(process.env.MONGODB_URI || process.env.MONGO_URL, {
@@ -22,7 +22,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/business", route);
-// for deployîng in heroko
+// for deploying in herokou
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.use("*", (req, res) => {

@@ -14,7 +14,7 @@ export default function Edit() {
   // equivalent to componentDidMount in class components
   useEffect(() => {
     axios
-      .get("http://localhost:4000/business/edit/" + params.id)
+      .get(process.env.REACT_APP_API + "/business/edit/" + params.id)
       .then((response) => {
         setbusinessName(response.data.business_name);
         setpersonName(response.data.person_name);
@@ -30,7 +30,10 @@ export default function Edit() {
       business_gst_name: gstNumber,
     };
     axios
-      .post("http://localhost:4000/business/edit/update/" + params.id, obj)
+      .post(
+        process.env.REACT_APP_API + "/business/edit/update/" + params.id,
+        obj
+      )
       .then((response) => console.log(response.data));
     // redirect to /index
     navigate(-1);

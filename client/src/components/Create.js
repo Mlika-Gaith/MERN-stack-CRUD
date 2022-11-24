@@ -14,7 +14,7 @@ export default function Create() {
       business_gst_name: gstNumber,
     };
     axios
-      .post("http://localhost:4000/business/add", obj)
+      .post(process.env.REACT_APP_API + "/business/add", obj)
       .then((res) => console.log(res.data));
 
     // clear fields
